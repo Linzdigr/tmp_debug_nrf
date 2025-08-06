@@ -1,0 +1,27 @@
+# Copyright (c) 2020, Marco Peter
+# SPDX-License-Identifier: Apache-2.0
+
+description: SSD1333 160x128 dot-matrix display controller on SPI bus
+
+compatible: "solomon,ssd1333"
+
+include: [spi-device.yaml, display-controller.yaml]
+
+properties:
+    data-ctrl-gpios:
+      type: phandle-array
+      required: true
+      description: D/C# pin.
+
+    spi-max-frequency:
+      type: int
+      required: true
+      description: Maximum clock frequency of device's SPI interface in Hz
+
+    reset-gpios:
+      type: phandle-array
+      required: false
+      description: RESET pin.
+
+    label:
+      required: true
