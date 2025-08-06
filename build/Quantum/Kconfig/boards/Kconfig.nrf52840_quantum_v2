@@ -1,0 +1,2 @@
+# Load board Kconfig descriptions.
+osource "/Users/ferez/developpement/Quantum/boards/KiwiElectronics/nrf52840_quantum_v2/Kconfig.nrf52840_quantum_v2"

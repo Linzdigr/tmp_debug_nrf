@@ -1,0 +1,85 @@
+/*
+ * Copyright (c) 2022 Kiwi devices Inc.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+
+/*
+ * nRF52840_dk      SSD1333 (160x128)
+ *
+ * P0.28 (28)      RES
+ * P0.30 (30)      DC (DATA/CMD)
+ * P0.27 (27)      SCK
+ * P1.00 (32)      MOSI
+ * P1.08 (40)      CS
+ */
+
+/ {
+  chosen {
+    zephyr,display = &ssd1333;
+  };
+
+  scintil {
+    compatible = "gpio-keys";
+    sig0: sig_0 {
+      gpios = <&gpio0 4 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>;
+      label = "Scintillator pulse input 0";
+    };
+  };
+  zephyr,user {
+    /* adjust channel number according to pinmux in board.dts */
+    io-channels = <&adc 0>; // 1 = P0.03
+  };
+};
+
+&pinctrl {
+  spi3_default: spi3_default {
+    group1 {
+      psels = <NRF_PSEL(SPIM_SCK, 0, 27)>,
+              <NRF_PSEL(SPIM_MOSI, 1, 0)>,
+              <NRF_PSEL(SPIM_MISO, 0, 31)>;
+    };
+  };
+
+  spi3_sleep: spi3_sleep {
+    group1 {
+      psels = <NRF_PSEL(SPIM_SCK, 0, 27)>,
+              <NRF_PSEL(SPIM_MOSI, 1, 0)>,
+              <NRF_PSEL(SPIM_MISO, 0, 31)>;
+      low-power-enable;
+    };
+  };
+};
+
+&spi1 {
+  status = "disabled";
+};
+
+&spi2 {
+  status = "disabled";
+};
+
+&spi3 {
+  compatible = "nordic,nrf-spim";
+  status = "okay";
+  pinctrl-0 = <&spi3_default>;
+  pinctrl-1 = <&spi3_sleep>;
+  cs-gpios = <&gpio1 8 GPIO_ACTIVE_LOW>;
+  // mosi-pin = <32>;
+  // sck-pin = <41>;
+  pinctrl-names = "default", "sleep";
+  clock-frequency = <8000000>;
+
+  ssd1333: ssd1333@0 {
+    compatible = "solomon,ssd1333";
+    label = "SSD1333";
+    spi-max-frequency = <8000000>;
+    reg = <0>;
+    data-ctrl-gpios = <&gpio0 30 GPIO_ACTIVE_LOW>;
+    reset-gpios = <&gpio0 28 GPIO_ACTIVE_LOW>;
+    width = <160>;
+    height = <128>;
+  };
+};
+

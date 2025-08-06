@@ -1,0 +1,22 @@
+cmake:
+  board:
+    name: nrf52840_quantum_v2
+    path:
+     - /Users/ferez/developpement/Quantum/boards/KiwiElectronics/nrf52840_quantum_v2
+    qualifiers: nrf52840
+    revision: 
+  images:
+   - name: Quantum
+     source-dir: /Users/ferez/developpement/Quantum
+     type: MAIN
+  kconfig:
+    files:
+     - /Users/ferez/developpement/Quantum/build/_sysbuild/empty.conf
+     - /Users/ferez/developpement/Quantum/build/_sysbuild/empty.conf
+    user-files:
+     - /Users/ferez/developpement/Quantum/build/_sysbuild/empty.conf
+version: 0.1.0
+west:
+  command: /opt/nordic/ncs/toolchains/ef4fc6722e/bin/west build --build-dir /Users/ferez/developpement/Quantum/build /Users/ferez/developpement/Quantum --pristine --board nrf52840_quantum_v2/nrf52840 -- -DCONF_FILE=prj.conf -DDTC_OVERLAY_FILE=boards/KiwiElectronics/nrf52840_quantum_v2/nrf52840_quantum_v2_SSD1333.overlay -DBOARD_ROOT=/Users/ferez/developpement/Quantum
+  topdir: /opt/nordic/ncs/v3.0.2
+  version: 1.2.0

@@ -1,0 +1,5 @@
+menu "Quantum"
+
+rsource "drivers/Kconfig.ssd1333"
+
+endmenu

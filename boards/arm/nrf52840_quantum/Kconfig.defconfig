@@ -1,0 +1,15 @@
+# Copyright (c) 2022 Nordic Semiconductor ASA
+# SPDX-License-Identifier: Apache-2.0
+
+if BOARD_NRF52840_QUANTUM
+
+config BOARD
+  default "nrf52840_quantum"
+
+config BT_CTLR
+  default BT
+
+config SPI
+  default y
+
+endif

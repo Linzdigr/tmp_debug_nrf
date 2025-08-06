@@ -1,0 +1,5 @@
+board:
+  name: nrf52840_quantum_v2
+  vendor: KiwiElectronics
+  socs:
+    - name: nrf52840

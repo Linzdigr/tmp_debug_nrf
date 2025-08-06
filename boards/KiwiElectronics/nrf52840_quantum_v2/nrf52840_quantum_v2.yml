@@ -1,0 +1,10 @@
+identifier: nrf52840_quantum_v2/nrf52840
+name: Board for quantum project
+vendor: KiwiElectronics
+type: mcu
+arch: arm
+ram: 256
+flash: 1024
+toolchain:
+  - zephyr
+supported: []

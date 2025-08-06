@@ -1,0 +1,8 @@
+# Copyright (c) 2022 Nordic Semiconductor ASA
+# SPDX-License-Identifier: Apache-2.0
+
+config BOARD_NRF52840_QUANTUM
+	select SOC_NRF52840_QIAA
+
+config SPI
+  bool "SPI hardware support"

@@ -1,0 +1,41 @@
+board:
+  identifier: nrf52840_quantum
+  name: nrf52840_quantum
+  vendor: Kiwi Electronics
+  description: "Kiwi Electronics nRF52840 Quantum board"
+  socs:
+  - name: nrf52840  
+    variants:
+    - name: ns
+  revision:
+    format: major.minor.patch
+    default: 0.9.0
+    revisions:
+    - version: 0.9.0
+      description: Initial release
+  type: mcu
+  arch: arm
+  ram: 256
+  flash: 1024
+  toolchain:
+    - zephyr
+    - gnuarmemb
+    - xtools
+  supported:
+    - adc
+    - arduino_gpio
+    - arduino_i2c
+    - arduino_spi
+    - ble
+    - counter
+    - gpio
+    - i2c
+    - i2s
+    - ieee802154
+    - pwm
+    - spi
+    - qspi
+    - usb_cdc
+    - usb_device
+    - watchdog
+    - netif:openthread
